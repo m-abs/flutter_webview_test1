@@ -1,7 +1,9 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:webview_flutter/webview_flutter.dart';
 
 class PublicationRenderer extends StatefulWidget {
   PublicationRenderer({this.webPubHref});
@@ -12,6 +14,9 @@ class PublicationRenderer extends StatefulWidget {
 }
 
 class PublicationRendererState extends State<PublicationRenderer> {
+  final Completer<WebViewController> _webViewController =
+      Completer<WebViewController>();
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -23,20 +28,16 @@ class PublicationRendererState extends State<PublicationRenderer> {
           dynamic title = metadata['title'];
 
           dynamic readingOrder = webPub['readingOrder'];
-          dynamic resources = webPub['resources'];
-          dynamic toc = webPub['toc'];
-          dynamic pageList = webPub['page-list'];
-          dynamic landmarks = webPub['landmarks'];
-          print(json.encode(toc));
+
+          String initialUrl = _resolveUrl(readingOrder[1]['href']);
+
           return Scaffold(
             appBar: AppBar(
               // Here we take the value from the MyHomePage object that was created by
               // the App.build method, and use it to set our appbar title.
               title: Text(title),
             ),
-            body: Center(
-              child: Text('Loaded'),
-            ),
+            body: _makeWebView(initialUrl),
             drawer: _makeDrawer(context, webPub),
           );
         }
@@ -55,20 +56,55 @@ class PublicationRendererState extends State<PublicationRenderer> {
     );
   }
 
+  Builder _makeWebView(String initialUrl) {
+    return Builder(
+      builder: (context) {
+        return WebView(
+          debuggingEnabled: true,
+          initialUrl: initialUrl,
+          javascriptMode: JavascriptMode.unrestricted,
+          onWebViewCreated: (WebViewController webViewController) {
+            _webViewController.complete(webViewController);
+
+            webViewController.loadUrl(initialUrl);
+          },
+          navigationDelegate: (NavigationRequest request) {
+            print('allowing navigation to $request');
+            return NavigationDecision.navigate;
+          },
+          onPageStarted: (String url) {
+            print('Page started loading: $url');
+          },
+          onPageFinished: (String url) {
+            print('Page finished loading: $url');
+          },
+        );
+      },
+    );
+  }
+
   Widget _makeDrawer(context, dynamic webPub) {
+    dynamic metadata = webPub['metadata'];
+    dynamic title = metadata['title'];
+
     List<Widget> children = [
-      DrawerHeader(
-        child: Text('Drawer Header'),
-        decoration: BoxDecoration(
-          color: Colors.blue,
+      Semantics(
+        child: DrawerHeader(
+          child: Text(title),
+          decoration: BoxDecoration(
+            color: Colors.blue,
+          ),
         ),
       ),
       Semantics(
         header: true,
         child: ListTile(
           title: Text(
-            'Table of Content',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'Indholdsfortegnelse',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+            ),
           ),
         ),
       )
@@ -88,30 +124,58 @@ class PublicationRendererState extends State<PublicationRenderer> {
     List<Widget> tocWidgets = List<Widget>();
     for (var i = 0; i < tocItems.length; i += 1) {
       dynamic tocItem = tocItems[i];
-      tocWidgets.add(ListTile(
-        title: Text(tocItem['title']),
-        contentPadding: EdgeInsets.fromLTRB(
-          16 * (depth + 1),
-          16,
-          16,
-          16,
+      String itemHref = tocItem['href'];
+      String itemTitle = tocItem['title'];
+
+      tocWidgets.add(
+        Semantics(
+          hint: itemHref != null ? 'Go to' : null,
+          button: itemHref != null,
+          header: itemHref == null,
+          child: ListTile(
+            title: Text(
+              itemTitle,
+              style: TextStyle(fontWeight: itemHref != null ? FontWeight.normal : FontWeight.bold),
+            ),
+            contentPadding: EdgeInsets.fromLTRB(
+              16 * (depth + 1),
+              0,
+              16,
+              0,
+            ),
+            onTap: () {
+              if (itemHref != null) {
+                _loadUrl(itemHref);
+              }
+
+              Navigator.pop(context);
+            },
+          ),
         ),
-        onTap: () {
-          print(tocItem['href']);
+      );
 
-          Navigator.pop(context);
-        },
-      ));
-
-      if (tocItem['children'] != null) {
-        tocWidgets.addAll(_makeToc(context, tocItem['children'], depth + 1));
+      if (tocItem['children'] == null) {
+        continue;
       }
+
+      tocWidgets.addAll(_makeToc(context, tocItem['children'], depth + 1));
     }
 
     return tocWidgets;
   }
 
-  Future<http.Response> fetchWebPublication() async {
+  String _resolveUrl(String localUri) {
+    Uri uri = Uri.parse(widget.webPubHref);
+
+    return uri.resolve(localUri).toString();
+  }
+
+  void _loadUrl(String localUri) async {
+    WebViewController webViewController = await _webViewController.future;
+    webViewController.loadUrl(_resolveUrl(localUri));
+  }
+
+  Future<http.Response> fetchWebPublication() {
     return http.get(widget.webPubHref);
   }
 }
