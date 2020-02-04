@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_webview_test1/screens/publication-renderer.dart';
 import 'package:http/http.dart' as http;
 
 class PublicationList extends StatefulWidget {
@@ -43,6 +44,13 @@ class PublicationListState extends State<PublicationList> {
                     leading: src != null ? Image.network(src) : null,
                     onTap: () {
                       print(href);
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PublicationRenderer(
+                                    webPubHref: href,
+                                  )));
                     },
                   ),
                 );
@@ -52,19 +60,20 @@ class PublicationListState extends State<PublicationList> {
         }
 
         return Scaffold(
-            appBar: AppBar(
-              // Here we take the value from the MyHomePage object that was created by
-              // the App.build method, and use it to set our appbar title.
-              title: Text('Loading...'),
-            ),
-            body: Center(
-              child: CircularProgressIndicator(),
-            ));
+          appBar: AppBar(
+            // Here we take the value from the MyHomePage object that was created by
+            // the App.build method, and use it to set our appbar title.
+            title: Text('Loading...'),
+          ),
+          body: Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
       },
     );
   }
 
-  Future<http.Response> fetchOPDSFeed() {
+  Future<http.Response> fetchOPDSFeed() async {
     return http.get('https://readium2.herokuapp.com/opds2/publications.json');
   }
 }
