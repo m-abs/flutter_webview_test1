@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -14,7 +15,7 @@ class PublicationRenderer extends StatefulWidget {
 }
 
 class PublicationRendererState extends State<PublicationRenderer> {
-  final Completer<WebViewController> _webViewController =
+  Completer<WebViewController> _webViewController =
       Completer<WebViewController>();
 
   @override
@@ -63,10 +64,25 @@ class PublicationRendererState extends State<PublicationRenderer> {
           debuggingEnabled: true,
           initialUrl: initialUrl,
           javascriptMode: JavascriptMode.unrestricted,
-          onWebViewCreated: (WebViewController webViewController) {
+          javascriptChannels: [
+            JavascriptChannel(
+                name: 'Flutter',
+                onMessageReceived: (jsMessage) {
+                  String message = jsMessage.message;
+
+                  try {
+                    print(json.decode(message));
+                  } catch (err) {
+                    print(err);
+                  }
+                }),
+          ].toSet(),
+          onWebViewCreated: (WebViewController webViewController) async {
             _webViewController.complete(webViewController);
 
-            webViewController.loadUrl(initialUrl);
+            if (await webViewController.currentUrl() != initialUrl) {
+              _loadUrl(initialUrl);
+            }
           },
           navigationDelegate: (NavigationRequest request) {
             print('allowing navigation to $request');
@@ -77,6 +93,7 @@ class PublicationRendererState extends State<PublicationRenderer> {
           },
           onPageFinished: (String url) {
             print('Page finished loading: $url');
+            _injectJavaScript('assets/webview-viewer.js');
           },
         );
       },
@@ -87,12 +104,37 @@ class PublicationRendererState extends State<PublicationRenderer> {
     dynamic metadata = webPub['metadata'];
     dynamic title = metadata['title'];
 
+    dynamic resources = webPub['resources'];
+    DecorationImage coverImage;
+
+    for (var i = 0; i < resources.length; i += 1) {
+      dynamic resource = resources[i];
+      if (resource['rel'] != 'cover') {
+        continue;
+      }
+
+      coverImage = DecorationImage(
+          image: NetworkImage(_resolveUrl(resource['href'])),
+          alignment: Alignment.centerRight,
+          fit: BoxFit.fitHeight);
+
+      break;
+    }
+
     List<Widget> children = [
       Semantics(
+        hidden: true,
         child: DrawerHeader(
-          child: Text(title),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(title),
+            ],
+          ),
           decoration: BoxDecoration(
             color: Colors.blue,
+            image: coverImage,
           ),
         ),
       ),
@@ -135,7 +177,9 @@ class PublicationRendererState extends State<PublicationRenderer> {
           child: ListTile(
             title: Text(
               itemTitle,
-              style: TextStyle(fontWeight: itemHref != null ? FontWeight.normal : FontWeight.bold),
+              style: TextStyle(
+                  fontWeight:
+                      itemHref != null ? FontWeight.normal : FontWeight.bold),
             ),
             contentPadding: EdgeInsets.fromLTRB(
               16 * (depth + 1),
@@ -173,6 +217,16 @@ class PublicationRendererState extends State<PublicationRenderer> {
   void _loadUrl(String localUri) async {
     WebViewController webViewController = await _webViewController.future;
     webViewController.loadUrl(_resolveUrl(localUri));
+  }
+
+  void _injectJavaScript(String path) async {
+    try {
+      String javascriptString = await rootBundle.loadString(path);
+      WebViewController webViewController = await _webViewController.future;
+      await webViewController.evaluateJavascript(javascriptString);
+    } catch (err) {
+      print(err);
+    }
   }
 
   Future<http.Response> fetchWebPublication() {
