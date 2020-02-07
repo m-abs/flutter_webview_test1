@@ -1,0 +1,595 @@
+{
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "@type": "http://schema.org/Book",
+    "title": "Children's Literature",
+    "subtitle": "A Textbook of Sources for Teachers and Teacher-Training Classes",
+    "identifier": "http://www.gutenberg.org/ebooks/25545",
+    "author": [
+      {
+        "name": "Charles Madison Curry",
+        "sortAs": "Curry, Charles Madison"
+      },
+      {
+        "name": "Erle Elsworth Clippinger",
+        "sortAs": "Clippinger, Erle Elsworth"
+      }
+    ],
+    "language": "en",
+    "modified": "2020-02-07T09:28:24.543Z",
+    "published": "2008-05-20T00:00:00.000Z",
+    "rights": "Public domain in the USA.",
+    "source": "http://www.gutenberg.org/files/25545/25545-h/25545-h.htm",
+    "subject": [
+      "Children -- Books and reading",
+      "Children's literature -- Study and teaching"
+    ]
+  },
+  "links": [
+    {
+      "type": "application/webpub+json",
+      "rel": "self",
+      "href": "https://readium2.herokuapp.com/pub/L2FwcC9taXNjL2VwdWJzL2NoaWxkcmVucy1saXRlcmF0dXJlLmVwdWI%3D/manifest.json"
+    }
+  ],
+  "readingOrder": [
+    {
+      "type": "application/xhtml+xml",
+      "href": "EPUB/cover.xhtml"
+    },
+    {
+      "type": "application/xhtml+xml",
+      "properties": {
+        "contains": [
+          "js"
+        ]
+      },
+      "rel": "contents",
+      "href": "EPUB/nav.xhtml"
+    },
+    {
+      "type": "application/xhtml+xml",
+      "href": "EPUB/s04.xhtml"
+    }
+  ],
+  "resources": [
+    {
+      "type": "image/png",
+      "height": 714,
+      "width": 500,
+      "rel": "cover",
+      "href": "EPUB/images/cover.png"
+    },
+    {
+      "type": "text/css",
+      "href": "EPUB/css/epub.css"
+    },
+    {
+      "type": "text/css",
+      "href": "EPUB/css/nav.css"
+    },
+    {
+      "type": "application/x-dtbncx+xml",
+      "href": "EPUB/toc.ncx"
+    }
+  ],
+  "toc": [
+    {
+      "title": "SECTION IV FAIRY STORIES—MODERN FANTASTIC TALES",
+      "children": [
+        {
+          "title": "BIBLIOGRAPHY",
+          "href": "EPUB/s04.xhtml#pgepubid00495"
+        },
+        {
+          "title": "INTRODUCTORY",
+          "href": "EPUB/s04.xhtml#pgepubid00498"
+        },
+        {
+          "title": "Abram S. Isaacs",
+          "children": [
+            {
+              "title": "190 A FOUR-LEAVED CLOVER",
+              "children": [
+                {
+                  "title": "I. The Rabbi and the Diadem",
+                  "href": "EPUB/s04.xhtml#pgepubid99001"
+                },
+                {
+                  "title": "II. Friendship",
+                  "href": "EPUB/s04.xhtml#pgepubid99002"
+                },
+                {
+                  "title": "III. True Charity",
+                  "href": "EPUB/s04.xhtml#pgepubid99003"
+                },
+                {
+                  "title": "IV. An Eastern Garden",
+                  "href": "EPUB/s04.xhtml#pgepubid99004"
+                }
+              ],
+              "href": "EPUB/s04.xhtml#pgepubid00503"
+            }
+          ]
+        },
+        {
+          "title": "Samuel Taylor Coleridge",
+          "children": [
+            {
+              "title": "191 THE LORD HELPETH MAN AND BEAST",
+              "href": "EPUB/s04.xhtml#pgepubid00508"
+            }
+          ]
+        },
+        {
+          "title": "Hans Christian Andersen",
+          "children": [
+            {
+              "title": "192 THE REAL PRINCESS",
+              "href": "EPUB/s04.xhtml#pgepubid00512"
+            },
+            {
+              "title": "193 THE EMPEROR'S NEW CLOTHES",
+              "href": "EPUB/s04.xhtml#pgepubid00515"
+            },
+            {
+              "title": "194 THE NIGHTINGALE",
+              "href": "EPUB/s04.xhtml#pgepubid00520"
+            },
+            {
+              "title": "195 THE FIR TREE",
+              "href": "EPUB/s04.xhtml#pgepubid00529"
+            },
+            {
+              "title": "196 THE TINDER-BOX",
+              "href": "EPUB/s04.xhtml#pgepubid00536"
+            },
+            {
+              "title": "197 THE HARDY TIN SOLDIER",
+              "href": "EPUB/s04.xhtml#pgepubid00543"
+            },
+            {
+              "title": "198 THE UGLY DUCKLING",
+              "href": "EPUB/s04.xhtml#pgepubid00548"
+            }
+          ]
+        },
+        {
+          "title": "Frances Browne",
+          "children": [
+            {
+              "title": "199 THE STORY OF FAIRYFOOT",
+              "href": "EPUB/s04.xhtml#pgepubid00556"
+            }
+          ]
+        },
+        {
+          "title": "Oscar Wilde",
+          "children": [
+            {
+              "title": "200 THE HAPPY PRINCE",
+              "href": "EPUB/s04.xhtml#pgepubid00566"
+            }
+          ]
+        },
+        {
+          "title": "Raymond MacDonald Alden",
+          "children": [
+            {
+              "title": "201 THE KNIGHTS OF THE SILVER SHIELD",
+              "href": "EPUB/s04.xhtml#pgepubid00574"
+            }
+          ]
+        },
+        {
+          "title": "Jean Ingelow",
+          "children": [
+            {
+              "title": "202 THE PRINCE'S DREAM",
+              "href": "EPUB/s04.xhtml#pgepubid00580"
+            }
+          ]
+        },
+        {
+          "title": "Frank R. Stockton",
+          "children": [
+            {
+              "title": "203 OLD PIPES AND THE DRYAD",
+              "href": "EPUB/s04.xhtml#pgepubid00588"
+            }
+          ]
+        },
+        {
+          "title": "John Ruskin",
+          "children": [
+            {
+              "title": "204 THE KING OF THE GOLDEN RIVER OR THE BLACK BROTHERS",
+              "href": "EPUB/s04.xhtml#pgepubid00602"
+            }
+          ]
+        }
+      ],
+      "href": "EPUB/s04.xhtml#pgepubid00492"
+    }
+  ],
+  "page-list": [
+    {
+      "title": "169",
+      "href": "EPUB/s04.xhtml#Page_169"
+    },
+    {
+      "title": "170",
+      "href": "EPUB/s04.xhtml#Page_170"
+    },
+    {
+      "title": "171",
+      "href": "EPUB/s04.xhtml#Page_171"
+    },
+    {
+      "title": "172",
+      "href": "EPUB/s04.xhtml#Page_172"
+    },
+    {
+      "title": "173",
+      "href": "EPUB/s04.xhtml#Page_173"
+    },
+    {
+      "title": "174",
+      "href": "EPUB/s04.xhtml#Page_174"
+    },
+    {
+      "title": "175",
+      "href": "EPUB/s04.xhtml#Page_175"
+    },
+    {
+      "title": "176",
+      "href": "EPUB/s04.xhtml#Page_176"
+    },
+    {
+      "title": "177",
+      "href": "EPUB/s04.xhtml#Page_177"
+    },
+    {
+      "title": "178",
+      "href": "EPUB/s04.xhtml#Page_178"
+    },
+    {
+      "title": "179",
+      "href": "EPUB/s04.xhtml#Page_179"
+    },
+    {
+      "title": "180",
+      "href": "EPUB/s04.xhtml#Page_180"
+    },
+    {
+      "title": "181",
+      "href": "EPUB/s04.xhtml#Page_181"
+    },
+    {
+      "title": "182",
+      "href": "EPUB/s04.xhtml#Page_182"
+    },
+    {
+      "title": "183",
+      "href": "EPUB/s04.xhtml#Page_183"
+    },
+    {
+      "title": "184",
+      "href": "EPUB/s04.xhtml#Page_184"
+    },
+    {
+      "title": "185",
+      "href": "EPUB/s04.xhtml#Page_185"
+    },
+    {
+      "title": "186",
+      "href": "EPUB/s04.xhtml#Page_186"
+    },
+    {
+      "title": "187",
+      "href": "EPUB/s04.xhtml#Page_187"
+    },
+    {
+      "title": "188",
+      "href": "EPUB/s04.xhtml#Page_188"
+    },
+    {
+      "title": "189",
+      "href": "EPUB/s04.xhtml#Page_189"
+    },
+    {
+      "title": "190",
+      "href": "EPUB/s04.xhtml#Page_190"
+    },
+    {
+      "title": "191",
+      "href": "EPUB/s04.xhtml#Page_191"
+    },
+    {
+      "title": "192",
+      "href": "EPUB/s04.xhtml#Page_192"
+    },
+    {
+      "title": "193",
+      "href": "EPUB/s04.xhtml#Page_193"
+    },
+    {
+      "title": "194",
+      "href": "EPUB/s04.xhtml#Page_194"
+    },
+    {
+      "title": "195",
+      "href": "EPUB/s04.xhtml#Page_195"
+    },
+    {
+      "title": "196",
+      "href": "EPUB/s04.xhtml#Page_196"
+    },
+    {
+      "title": "197",
+      "href": "EPUB/s04.xhtml#Page_197"
+    },
+    {
+      "title": "198",
+      "href": "EPUB/s04.xhtml#Page_198"
+    },
+    {
+      "title": "199",
+      "href": "EPUB/s04.xhtml#Page_199"
+    },
+    {
+      "title": "200",
+      "href": "EPUB/s04.xhtml#Page_200"
+    },
+    {
+      "title": "201",
+      "href": "EPUB/s04.xhtml#Page_201"
+    },
+    {
+      "title": "202",
+      "href": "EPUB/s04.xhtml#Page_202"
+    },
+    {
+      "title": "203",
+      "href": "EPUB/s04.xhtml#Page_203"
+    },
+    {
+      "title": "204",
+      "href": "EPUB/s04.xhtml#Page_204"
+    },
+    {
+      "title": "205",
+      "href": "EPUB/s04.xhtml#Page_205"
+    },
+    {
+      "title": "206",
+      "href": "EPUB/s04.xhtml#Page_206"
+    },
+    {
+      "title": "207",
+      "href": "EPUB/s04.xhtml#Page_207"
+    },
+    {
+      "title": "208",
+      "href": "EPUB/s04.xhtml#Page_208"
+    },
+    {
+      "title": "209",
+      "href": "EPUB/s04.xhtml#Page_209"
+    },
+    {
+      "title": "210",
+      "href": "EPUB/s04.xhtml#Page_210"
+    },
+    {
+      "title": "211",
+      "href": "EPUB/s04.xhtml#Page_211"
+    },
+    {
+      "title": "212",
+      "href": "EPUB/s04.xhtml#Page_212"
+    },
+    {
+      "title": "213",
+      "href": "EPUB/s04.xhtml#Page_213"
+    },
+    {
+      "title": "214",
+      "href": "EPUB/s04.xhtml#Page_214"
+    },
+    {
+      "title": "215",
+      "href": "EPUB/s04.xhtml#Page_215"
+    },
+    {
+      "title": "216",
+      "href": "EPUB/s04.xhtml#Page_216"
+    },
+    {
+      "title": "217",
+      "href": "EPUB/s04.xhtml#Page_217"
+    },
+    {
+      "title": "218",
+      "href": "EPUB/s04.xhtml#Page_218"
+    },
+    {
+      "title": "219",
+      "href": "EPUB/s04.xhtml#Page_219"
+    },
+    {
+      "title": "220",
+      "href": "EPUB/s04.xhtml#Page_220"
+    },
+    {
+      "title": "221",
+      "href": "EPUB/s04.xhtml#Page_221"
+    },
+    {
+      "title": "222",
+      "href": "EPUB/s04.xhtml#Page_222"
+    },
+    {
+      "title": "223",
+      "href": "EPUB/s04.xhtml#Page_223"
+    },
+    {
+      "title": "224",
+      "href": "EPUB/s04.xhtml#Page_224"
+    },
+    {
+      "title": "225",
+      "href": "EPUB/s04.xhtml#Page_225"
+    },
+    {
+      "title": "226",
+      "href": "EPUB/s04.xhtml#Page_226"
+    },
+    {
+      "title": "227",
+      "href": "EPUB/s04.xhtml#Page_227"
+    },
+    {
+      "title": "228",
+      "href": "EPUB/s04.xhtml#Page_228"
+    },
+    {
+      "title": "229",
+      "href": "EPUB/s04.xhtml#Page_229"
+    },
+    {
+      "title": "230",
+      "href": "EPUB/s04.xhtml#Page_230"
+    },
+    {
+      "title": "231",
+      "href": "EPUB/s04.xhtml#Page_231"
+    },
+    {
+      "title": "232",
+      "href": "EPUB/s04.xhtml#Page_232"
+    },
+    {
+      "title": "233",
+      "href": "EPUB/s04.xhtml#Page_233"
+    },
+    {
+      "title": "234",
+      "href": "EPUB/s04.xhtml#Page_234"
+    },
+    {
+      "title": "235",
+      "href": "EPUB/s04.xhtml#Page_235"
+    },
+    {
+      "title": "236",
+      "href": "EPUB/s04.xhtml#Page_236"
+    },
+    {
+      "title": "237",
+      "href": "EPUB/s04.xhtml#Page_237"
+    },
+    {
+      "title": "238",
+      "href": "EPUB/s04.xhtml#Page_238"
+    },
+    {
+      "title": "239",
+      "href": "EPUB/s04.xhtml#Page_239"
+    },
+    {
+      "title": "240",
+      "href": "EPUB/s04.xhtml#Page_240"
+    },
+    {
+      "title": "241",
+      "href": "EPUB/s04.xhtml#Page_241"
+    },
+    {
+      "title": "242",
+      "href": "EPUB/s04.xhtml#Page_242"
+    },
+    {
+      "title": "243",
+      "href": "EPUB/s04.xhtml#Page_243"
+    },
+    {
+      "title": "244",
+      "href": "EPUB/s04.xhtml#Page_244"
+    },
+    {
+      "title": "245",
+      "href": "EPUB/s04.xhtml#Page_245"
+    },
+    {
+      "title": "246",
+      "href": "EPUB/s04.xhtml#Page_246"
+    },
+    {
+      "title": "247",
+      "href": "EPUB/s04.xhtml#Page_247"
+    },
+    {
+      "title": "248",
+      "href": "EPUB/s04.xhtml#Page_248"
+    },
+    {
+      "title": "249",
+      "href": "EPUB/s04.xhtml#Page_249"
+    },
+    {
+      "title": "250",
+      "href": "EPUB/s04.xhtml#Page_250"
+    },
+    {
+      "title": "251",
+      "href": "EPUB/s04.xhtml#Page_251"
+    },
+    {
+      "title": "252",
+      "href": "EPUB/s04.xhtml#Page_252"
+    },
+    {
+      "title": "253",
+      "href": "EPUB/s04.xhtml#Page_253"
+    },
+    {
+      "title": "254",
+      "href": "EPUB/s04.xhtml#Page_254"
+    },
+    {
+      "title": "255",
+      "href": "EPUB/s04.xhtml#Page_255"
+    },
+    {
+      "title": "256",
+      "href": "EPUB/s04.xhtml#Page_256"
+    },
+    {
+      "title": "257",
+      "href": "EPUB/s04.xhtml#Page_257"
+    },
+    {
+      "title": "258",
+      "href": "EPUB/s04.xhtml#Page_258"
+    },
+    {
+      "title": "259",
+      "href": "EPUB/s04.xhtml#Page_259"
+    },
+    {
+      "title": "260",
+      "href": "EPUB/s04.xhtml#Page_260"
+    }
+  ],
+  "landmarks": [
+    {
+      "title": "Table of Contents",
+      "href": "EPUB/nav.xhtml#toc"
+    },
+    {
+      "title": "Begin Reading",
+      "href": "EPUB/s04.xhtml#pgepubid00498"
+    }
+  ]
+}

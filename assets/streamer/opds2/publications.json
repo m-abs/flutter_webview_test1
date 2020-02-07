@@ -1,0 +1,87 @@
+{
+  "metadata": {
+    "numberOfItems": 2,
+    "@type": "http://schema.org/DataFeed",
+    "title": "Readium 2 OPDS 2.0 Feed",
+    "modified": "2020-02-07T09:26:09.196Z"
+  },
+  "links": [
+    {
+      "type": "application/opds+json",
+      "rel": "self",
+      "href": "https://readium2.herokuapp.com/opds2/publications.json"
+    }
+  ],
+  "publications": [
+    {
+      "metadata": {
+        "@type": "http://schema.org/Book",
+        "title": "Children's Literature",
+        "subtitle": "A Textbook of Sources for Teachers and Teacher-Training Classes",
+        "identifier": "http://www.gutenberg.org/ebooks/25545",
+        "author": [
+          {
+            "name": "Charles Madison Curry",
+            "sortAs": "Curry, Charles Madison"
+          },
+          {
+            "name": "Erle Elsworth Clippinger",
+            "sortAs": "Clippinger, Erle Elsworth"
+          }
+        ],
+        "language": "en",
+        "modified": "2020-02-07T09:26:09.209Z",
+        "published": "2008-05-20T00:00:00.000Z",
+        "rights": "Public domain in the USA.",
+        "source": "http://www.gutenberg.org/files/25545/25545-h/25545-h.htm",
+        "subject": [
+          "Children -- Books and reading",
+          "Children's literature -- Study and teaching"
+        ]
+      },
+      "links": [
+        {
+          "type": "application/webpub+json",
+          "rel": "http://opds-spec.org/acquisition",
+          "href": "https://readium2.herokuapp.com/pub/L2FwcC9taXNjL2VwdWJzL2NoaWxkcmVucy1saXRlcmF0dXJlLmVwdWI%3D/manifest.json"
+        }
+      ],
+      "images": [
+        {
+          "type": "image/png",
+          "height": 714,
+          "width": 500,
+          "href": "https://readium2.herokuapp.com/pub/L2FwcC9taXNjL2VwdWJzL2NoaWxkcmVucy1saXRlcmF0dXJlLmVwdWI%3D/EPUB/images/cover.png"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "@type": "http://schema.org/Book",
+        "title": "The Waste Land",
+        "identifier": "code.google.com.epub-samples.wasteland-otf-obfuscated",
+        "author": "T.S. Eliot",
+        "language": "en-US",
+        "modified": "2020-02-07T09:26:09.632Z",
+        "published": "2011-09-01T00:00:00.000Z",
+        "description": "OTF font obfuscated using algorithm defined in OCF 3.0, fallback to sans-serif system font",
+        "rights": "This work is shared with the public using the Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0) license."
+      },
+      "links": [
+        {
+          "type": "application/webpub+json",
+          "rel": "http://opds-spec.org/acquisition",
+          "href": "https://readium2.herokuapp.com/pub/L2FwcC9taXNjL2VwdWJzL3dhc3RlbGFuZC1vdGYtb2JmLmVwdWI%3D/manifest.json"
+        }
+      ],
+      "images": [
+        {
+          "type": "image/jpeg",
+          "height": 510,
+          "width": 398,
+          "href": "https://readium2.herokuapp.com/pub/L2FwcC9taXNjL2VwdWJzL3dhc3RlbGFuZC1vdGYtb2JmLmVwdWI%3D/EPUB/wasteland-cover.jpg"
+        }
+      ]
+    }
+  ]
+}

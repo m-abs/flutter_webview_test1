@@ -1,0 +1,124 @@
+{
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "@type": "http://schema.org/Book",
+    "title": "The Waste Land",
+    "identifier": "code.google.com.epub-samples.wasteland-otf-obfuscated",
+    "author": "T.S. Eliot",
+    "language": "en-US",
+    "modified": "2020-02-07T09:28:24.541Z",
+    "published": "2011-09-01T00:00:00.000Z",
+    "description": "OTF font obfuscated using algorithm defined in OCF 3.0, fallback to sans-serif system font",
+    "rights": "This work is shared with the public using the Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0) license."
+  },
+  "links": [
+    {
+      "type": "application/webpub+json",
+      "rel": "self",
+      "href": "https://readium2.herokuapp.com/pub/L2FwcC9taXNjL2VwdWJzL3dhc3RlbGFuZC1vdGYtb2JmLmVwdWI%3D/manifest.json"
+    }
+  ],
+  "readingOrder": [
+    {
+      "type": "application/xhtml+xml",
+      "href": "EPUB/wasteland-content.xhtml"
+    }
+  ],
+  "resources": [
+    {
+      "type": "application/xhtml+xml",
+      "rel": "contents",
+      "href": "EPUB/wasteland-nav.xhtml"
+    },
+    {
+      "type": "image/jpeg",
+      "height": 510,
+      "width": 398,
+      "rel": "cover",
+      "href": "EPUB/wasteland-cover.jpg"
+    },
+    {
+      "type": "text/css",
+      "href": "EPUB/wasteland.css"
+    },
+    {
+      "type": "text/css",
+      "href": "EPUB/fonts.css"
+    },
+    {
+      "type": "text/css",
+      "href": "EPUB/wasteland-night.css"
+    },
+    {
+      "type": "application/vnd.ms-opentype",
+      "properties": {
+        "encrypted": {
+          "algorithm": "http://www.idpf.org/2008/embedding"
+        }
+      },
+      "href": "EPUB/OldStandard-Regular.obf.otf"
+    },
+    {
+      "type": "application/vnd.ms-opentype",
+      "properties": {
+        "encrypted": {
+          "algorithm": "http://www.idpf.org/2008/embedding"
+        }
+      },
+      "href": "EPUB/OldStandard-Italic.obf.otf"
+    },
+    {
+      "type": "application/vnd.ms-opentype",
+      "properties": {
+        "encrypted": {
+          "algorithm": "http://www.idpf.org/2008/embedding"
+        }
+      },
+      "href": "EPUB/OldStandard-Bold.obf.otf"
+    },
+    {
+      "type": "application/x-dtbncx+xml",
+      "href": "EPUB/wasteland.ncx"
+    }
+  ],
+  "toc": [
+    {
+      "title": "I. THE BURIAL OF THE DEAD",
+      "href": "EPUB/wasteland-content.xhtml#ch1"
+    },
+    {
+      "title": "II. A GAME OF CHESS",
+      "href": "EPUB/wasteland-content.xhtml#ch2"
+    },
+    {
+      "title": "III. THE FIRE SERMON",
+      "href": "EPUB/wasteland-content.xhtml#ch3"
+    },
+    {
+      "title": "IV. DEATH BY WATER",
+      "href": "EPUB/wasteland-content.xhtml#ch4"
+    },
+    {
+      "title": "V. WHAT THE THUNDER SAID",
+      "href": "EPUB/wasteland-content.xhtml#ch5"
+    },
+    {
+      "title": "NOTES ON \"THE WASTE LAND\"",
+      "href": "EPUB/wasteland-content.xhtml#rearnotes"
+    }
+  ],
+  "landmarks": [
+    {
+      "title": "frontmatter",
+      "href": "EPUB/wasteland-content.xhtml#frontmatter"
+    },
+    {
+      "title": "bodymatter",
+      "href": "EPUB/wasteland-content.xhtml#bodymatter"
+    },
+    {
+      "title": "backmatter",
+      "href": "EPUB/wasteland-content.xhtml#backmatter"
+    }
+  ]
+}
