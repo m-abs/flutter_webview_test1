@@ -43,7 +43,7 @@
         {
           "type": "application/webpub+json",
           "rel": "http://opds-spec.org/acquisition",
-          "href": "https://readium2.herokuapp.com/pub/L2FwcC9taXNjL2VwdWJzL2NoaWxkcmVucy1saXRlcmF0dXJlLmVwdWI%3D/manifest.json"
+          "href": "https://readium2.herokuapp.com/pub/childrens-literature/manifest.json"
         }
       ],
       "images": [
@@ -51,7 +51,7 @@
           "type": "image/png",
           "height": 714,
           "width": 500,
-          "href": "https://readium2.herokuapp.com/pub/L2FwcC9taXNjL2VwdWJzL2NoaWxkcmVucy1saXRlcmF0dXJlLmVwdWI%3D/EPUB/images/cover.png"
+          "href": "https://readium2.herokuapp.com/pub/childrens-literature/EPUB/images/cover.png"
         }
       ]
     },
@@ -71,7 +71,7 @@
         {
           "type": "application/webpub+json",
           "rel": "http://opds-spec.org/acquisition",
-          "href": "https://readium2.herokuapp.com/pub/L2FwcC9taXNjL2VwdWJzL3dhc3RlbGFuZC1vdGYtb2JmLmVwdWI%3D/manifest.json"
+          "href": "https://readium2.herokuapp.com/pub/the-waste-land/manifest.json"
         }
       ],
       "images": [
@@ -79,7 +79,7 @@
           "type": "image/jpeg",
           "height": 510,
           "width": 398,
-          "href": "https://readium2.herokuapp.com/pub/L2FwcC9taXNjL2VwdWJzL3dhc3RlbGFuZC1vdGYtb2JmLmVwdWI%3D/EPUB/wasteland-cover.jpg"
+          "href": "https://readium2.herokuapp.com/pub/the-waste-land/EPUB/wasteland-cover.jpg"
         }
       ]
     }

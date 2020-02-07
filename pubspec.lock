@@ -95,6 +95,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.4"
+  local_assets_server:
+    dependency: "direct main"
+    description:
+      name: local_assets_server
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2+5"
   matcher:
     dependency: transitive
     description:
@@ -109,6 +116,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.8"
+  mime:
+    dependency: transitive
+    description:
+      name: mime
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.9.6+3"
   path:
     dependency: transitive
     description:

@@ -29,7 +29,7 @@
     {
       "type": "application/webpub+json",
       "rel": "self",
-      "href": "https://readium2.herokuapp.com/pub/L2FwcC9taXNjL2VwdWJzL2NoaWxkcmVucy1saXRlcmF0dXJlLmVwdWI%3D/manifest.json"
+      "href": "https://readium2.herokuapp.com/pub/childrens-literature/manifest.json"
     }
   ],
   "readingOrder": [

@@ -24,6 +24,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   webview_flutter:
+  local_assets_server:
   http:
 
 dev_dependencies:
@@ -38,6 +39,15 @@ dev_dependencies:
 flutter:
   assets:
     - assets/
+    - assets/streamer/
+    - assets/streamer/opds2/
+    - assets/streamer/pub/
+    - assets/streamer/pub/the-waste-land/
+    - assets/streamer/pub/the-waste-land/EPUB/
+    - assets/streamer/pub/the-waste-land/EPUB/images/
+    - assets/streamer/pub/childrens-literature/
+    - assets/streamer/pub/childrens-literature/EPUB/
+    - assets/streamer/pub/childrens-literature/EPUB/images/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

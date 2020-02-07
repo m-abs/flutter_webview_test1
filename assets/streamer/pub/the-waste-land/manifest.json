@@ -15,7 +15,7 @@
     {
       "type": "application/webpub+json",
       "rel": "self",
-      "href": "https://readium2.herokuapp.com/pub/L2FwcC9taXNjL2VwdWJzL3dhc3RlbGFuZC1vdGYtb2JmLmVwdWI%3D/manifest.json"
+      "href": "https://readium2.herokuapp.com/pub/the-waste-land/manifest.json"
     }
   ],
   "readingOrder": [

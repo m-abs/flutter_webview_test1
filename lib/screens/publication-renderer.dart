@@ -7,9 +7,10 @@ import 'package:http/http.dart' as http;
 import 'package:webview_flutter/webview_flutter.dart';
 
 class PublicationRenderer extends StatefulWidget {
-  PublicationRenderer({this.webPubHref});
+  PublicationRenderer({this.webPubHref, this.baseUrl});
 
   final String webPubHref;
+  final String baseUrl;
   @override
   State<StatefulWidget> createState() => PublicationRendererState();
 }
@@ -17,6 +18,10 @@ class PublicationRenderer extends StatefulWidget {
 class PublicationRendererState extends State<PublicationRenderer> {
   Completer<WebViewController> _webViewController =
       Completer<WebViewController>();
+
+  String _resolveToLocalUrl(String url) {
+    return url.replaceAll('https://readium2.herokuapp.com/', widget.baseUrl);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -211,7 +216,7 @@ class PublicationRendererState extends State<PublicationRenderer> {
   String _resolveUrl(String localUri) {
     Uri uri = Uri.parse(widget.webPubHref);
 
-    return uri.resolve(localUri).toString();
+    return _resolveToLocalUrl(uri.resolve(localUri).toString());
   }
 
   void _loadUrl(String localUri) async {
