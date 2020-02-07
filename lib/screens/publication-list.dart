@@ -74,6 +74,12 @@ class PublicationListState extends State<PublicationList> {
   }
 
   Future<http.Response> fetchOPDSFeed() async {
-    return http.get('https://readium2.herokuapp.com/opds2/publications.json');
+    String url = 'https://readium2.herokuapp.com/opds2/publications.json';
+    try {
+      return await http.get(url);
+    } catch (err) {
+      print(err); // retry, herokuapp generates the feed on the first request and delivers it on the following requests
+      return await http.get(url);
+    }
   }
 }
