@@ -48,6 +48,10 @@ flutter:
     - assets/streamer/pub/childrens-literature/
     - assets/streamer/pub/childrens-literature/EPUB/
     - assets/streamer/pub/childrens-literature/EPUB/images/
+    - assets/streamer/tools/
+    - assets/streamer/tools/js/
+    - assets/streamer/tools/css/
+    - assets/streamer/tools/css/fonts/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

@@ -4,9 +4,23 @@
 	lang="en">
 	<head>
 		<title>Children's Literature</title>
+
+		<!-- READIUM CSS -->
+		<link rel="stylesheet" type="text/css" href="/tools/css/ReadiumCSS-before.css" />
+		<link rel="stylesheet" type="text/css" href="/tools/css/ReadiumCSS-default.css" />
+		<link rel="stylesheet" type="text/css" href="/tools/css/Nota.css" />
+		<!-- END READIUM CSS -->
+
 		<link href="css/epub.css" rel="stylesheet" type="text/css"/>
 		<link href="css/nav.css" rel="stylesheet" type="text/css"/>
+
+		<!-- READIUM CSS -->
+		<link rel="stylesheet" type="text/css" href="/tools/css/ReadiumCSS-after.css" />
+		<!-- END READIUM CSS -->
+
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+
+		<script src="/tools/js/webview-viewer.js"></script>
 	</head>
 	<body>
 		<nav epub:type="toc" id="toc">
@@ -425,33 +439,39 @@
 				</li>
 			</ol>
 		</nav>
-		
+
 		<script type="text/javascript">
-		<![CDATA[
-			var navLists = document.getElementsByTagName('nav');
-			
-			for (var i = 0; i < navLists.length; i++) {
-				// find the toc nav and process
-				if (navLists[i].getAttributeNS('http://www.idpf.org/2007/ops','type') == 'toc') {
-					removeHidden(navLists[i]);
-					break;
+			//<![CDATA[
+		  document.addEventListener('DOMContentLoaded', function() {
+				try {
+					var navLists = document.getElementsByTagName('nav');
+
+					for (var i = 0; i < navLists.length; i++) {
+						// find the toc nav and process
+						if (navLists[i].getAttributeNS('http://www.idpf.org/2007/ops','type') == 'toc') {
+							removeHidden(navLists[i]);
+							break;
+						}
+					}
+				} catch (err) {
+					console.error(err);
 				}
-			}
-			
-			function removeHidden(tocList) {
-				var liNodes = tocList.getElementsByTagName('li');
-				for (var i = 0; i < liNodes.length; i++) {
-					for (var j = 0; j < liNodes[i].childNodes.length; j++) {
-						if (liNodes[i].childNodes[j].nodeName == 'ol') {
-							// remove a hidden attribute
-							liNodes[i].childNodes[j].removeAttribute('hidden');
-							// call the function with the child to keep checking
-							removeHidden(liNodes[i].childNodes[j]);
+
+				function removeHidden(tocList) {
+					var liNodes = tocList.getElementsByTagName('li');
+					for (var i = 0; i < liNodes.length; i++) {
+						for (var j = 0; j < liNodes[i].childNodes.length; j++) {
+							if (liNodes[i].childNodes[j].nodeName == 'ol') {
+								// remove a hidden attribute
+								liNodes[i].childNodes[j].removeAttribute('hidden');
+								// call the function with the child to keep checking
+								removeHidden(liNodes[i].childNodes[j]);
+							}
 						}
 					}
 				}
-			}
-		]]>
+		});
+		//]]>
 		</script>
 	</body>
 </html>

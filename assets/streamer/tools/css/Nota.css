@@ -1,0 +1,20 @@
+div.page div.area {
+  display: none;
+}
+
+div.page {
+  width: auto !important;
+  height: auto !important;
+}
+
+div.page > image {
+  width: auto !important;
+  height: auto !important;
+}
+
+/** Why doesn't readium-css make a page-break on this? **/
+span[epub|type~='pagebreak'] {
+  break-before: column;
+  display: block;
+  border: 0;
+}

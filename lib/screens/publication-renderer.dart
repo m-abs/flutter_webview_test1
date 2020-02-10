@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -76,7 +75,8 @@ class PublicationRendererState extends State<PublicationRenderer> {
                   String message = jsMessage.message;
 
                   try {
-                    print(json.decode(message));
+                    dynamic data = json.decode(message);
+                    print(data);
                   } catch (err) {
                     print(err);
                   }
@@ -98,7 +98,6 @@ class PublicationRendererState extends State<PublicationRenderer> {
           },
           onPageFinished: (String url) {
             print('Page finished loading: $url');
-            _injectJavaScript('assets/webview-viewer.js');
           },
         );
       },
@@ -222,16 +221,6 @@ class PublicationRendererState extends State<PublicationRenderer> {
   void _loadUrl(String localUri) async {
     WebViewController webViewController = await _webViewController.future;
     webViewController.loadUrl(_resolveUrl(localUri));
-  }
-
-  void _injectJavaScript(String path) async {
-    try {
-      String javascriptString = await rootBundle.loadString(path);
-      WebViewController webViewController = await _webViewController.future;
-      await webViewController.evaluateJavascript(javascriptString);
-    } catch (err) {
-      print(err);
-    }
   }
 
   Future<http.Response> fetchWebPublication() {
