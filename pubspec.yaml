@@ -48,6 +48,7 @@ flutter:
     - assets/streamer/pub/childrens-literature/
     - assets/streamer/pub/childrens-literature/EPUB/
     - assets/streamer/pub/childrens-literature/EPUB/images/
+    - assets/streamer/pub/childrens-literature/EPUB/css/
     - assets/streamer/tools/
     - assets/streamer/tools/js/
     - assets/streamer/tools/css/

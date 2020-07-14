@@ -34,7 +34,7 @@ class PublicationRendererState extends State<PublicationRenderer> {
 
           dynamic readingOrder = webPub['readingOrder'];
 
-          String initialUrl = _resolveUrl(readingOrder[1]['href']);
+          String initialUrl = _resolveUrl(readingOrder[2]['href']);
 
           return Scaffold(
             appBar: AppBar(
@@ -64,41 +64,44 @@ class PublicationRendererState extends State<PublicationRenderer> {
   Builder _makeWebView(String initialUrl) {
     return Builder(
       builder: (context) {
-        return WebView(
-          debuggingEnabled: true,
-          initialUrl: initialUrl,
-          javascriptMode: JavascriptMode.unrestricted,
-          javascriptChannels: [
-            JavascriptChannel(
-                name: 'Flutter',
-                onMessageReceived: (jsMessage) {
-                  String message = jsMessage.message;
+        return Semantics(
+          enabled: true,
+          child: WebView(
+            debuggingEnabled: true,
+            initialUrl: initialUrl,
+            javascriptMode: JavascriptMode.unrestricted,
+            javascriptChannels: [
+              JavascriptChannel(
+                  name: 'Flutter',
+                  onMessageReceived: (jsMessage) {
+                    String message = jsMessage.message;
 
-                  try {
-                    dynamic data = json.decode(message);
-                    print(data);
-                  } catch (err) {
-                    print(err);
-                  }
-                }),
-          ].toSet(),
-          onWebViewCreated: (WebViewController webViewController) async {
-            _webViewController.complete(webViewController);
+                    try {
+                      dynamic data = json.decode(message);
+                      print(data);
+                    } catch (err) {
+                      print(err);
+                    }
+                  }),
+            ].toSet(),
+            onWebViewCreated: (WebViewController webViewController) async {
+              _webViewController.complete(webViewController);
 
-            if (await webViewController.currentUrl() != initialUrl) {
-              _loadUrl(initialUrl);
-            }
-          },
-          navigationDelegate: (NavigationRequest request) {
-            print('allowing navigation to $request');
-            return NavigationDecision.navigate;
-          },
-          onPageStarted: (String url) {
-            print('Page started loading: $url');
-          },
-          onPageFinished: (String url) {
-            print('Page finished loading: $url');
-          },
+              if (await webViewController.currentUrl() != initialUrl) {
+                _loadUrl(initialUrl);
+              }
+            },
+            navigationDelegate: (NavigationRequest request) {
+              print('allowing navigation to $request');
+              return NavigationDecision.navigate;
+            },
+            onPageStarted: (String url) {
+              print('Page started loading: $url');
+            },
+            onPageFinished: (String url) {
+              print('Page finished loading: $url');
+            },
+          ),
         );
       },
     );
@@ -168,6 +171,7 @@ class PublicationRendererState extends State<PublicationRenderer> {
 
   List<Widget> _makeToc(context, dynamic tocItems, double depth) {
     List<Widget> tocWidgets = List<Widget>();
+
     for (var i = 0; i < tocItems.length; i += 1) {
       dynamic tocItem = tocItems[i];
       String itemHref = tocItem['href'];

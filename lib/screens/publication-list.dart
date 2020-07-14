@@ -34,11 +34,11 @@ class PublicationListState extends State<PublicationList> {
 
     final address = await _server.serve();
 
-    print(address);
-
     setState(() {
       _address = address.address;
       _port = _server.boundPort;
+
+      print('baseurl: $_baseUrl');
       _isListening = true;
     });
   }
@@ -52,54 +52,65 @@ class PublicationListState extends State<PublicationList> {
     return FutureBuilder(
       future: fetchOPDSFeed(),
       builder: (context, AsyncSnapshot<http.Response> snapshot) {
-        if (snapshot.hasData) {
-          print(snapshot.data.headers);
-          print(snapshot.data.statusCode);
-          dynamic opdsFeed = json.decode(snapshot.data.body);
+        print(snapshot.hasData);
 
-          dynamic feedMetadata = opdsFeed['metadata'];
-          dynamic title = feedMetadata['title'];
-          dynamic numberOfItems = feedMetadata['numberOfItems'];
-          dynamic publications = opdsFeed['publications'];
-
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(title),
-            ),
-            body: ListView.builder(
-              itemCount: numberOfItems,
-              itemBuilder: (BuildContext context, int index) {
-                dynamic publication = publications[index];
-                dynamic pubMetadata = publication['metadata'];
-                String title = pubMetadata['title'];
-                String src = publication['images'][0]["href"];
-
-                String href = publication['links'][0]["href"];
-
-                return Container(
-                  color: index % 2 != 0 ? Colors.grey[300] : Colors.grey[100],
-                  child: ListTile(
-                    title: Text(title),
-                    leading: src != null ? Image.network(_resolveToLocalUrl(src)) : null,
-                    onTap: () {
-                      print(href);
-
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PublicationRenderer(
-                                    webPubHref: _resolveToLocalUrl(href),
-                                    baseUrl: _baseUrl,
-                                  )));
-                    },
-                  ),
-                );
-              },
-            ),
-          );
+        if (!snapshot.hasData) {
+          return _makeLoading();
         }
 
-        return _makeLoading();
+        print(snapshot.data.headers);
+        print(snapshot.data.statusCode);
+        dynamic opdsFeed = json.decode(snapshot.data.body);
+
+        dynamic feedMetadata = opdsFeed['metadata'];
+        dynamic title = feedMetadata['title'];
+        dynamic numberOfItems = feedMetadata['numberOfItems'];
+        dynamic publications = opdsFeed['publications'];
+
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(title),
+          ),
+          body: ListView.builder(
+            itemCount: numberOfItems,
+            addSemanticIndexes: false,
+            semanticChildCount: numberOfItems,
+            itemBuilder: (BuildContext context, int index) {
+              dynamic publication = publications[index];
+              dynamic pubMetadata = publication['metadata'];
+              String title = pubMetadata['title'];
+              String src = publication['images'][0]["href"];
+
+              String href = publication['links'][0]["href"];
+
+              return MergeSemantics(
+                child: IndexedSemantics(
+                  index: index,
+                  child: Container(
+                    color: index % 2 != 0 ? Colors.grey[300] : Colors.grey[100],
+                    child: ListTile(
+                      title: Text(title),
+                      leading: src != null
+                          ? Image.network(_resolveToLocalUrl(src))
+                          : null,
+                      onTap: () {
+                        print(href);
+
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PublicationRenderer(
+                                      webPubHref: _resolveToLocalUrl(href),
+                                      baseUrl: _baseUrl,
+                                    )));
+                      },
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        );
       },
     );
   }
@@ -122,7 +133,8 @@ class PublicationListState extends State<PublicationList> {
   }
 
   Future<http.Response> fetchOPDSFeed() async {
-    String url = _resolveToLocalUrl('https://readium2.herokuapp.com/opds2/publications.json');
+    String url = _resolveToLocalUrl(
+        'https://readium2.herokuapp.com/opds2/publications.json');
     print(url);
     try {
       return await http.get(url);
